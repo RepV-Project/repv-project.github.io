@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="RepV introduces safety-separable latent spaces for scalable neurosymbolic plan verification, providing probabilistic guarantees and improving compliance prediction accuracy by up to 15% with minimal parameter overhead.">
+  <meta name="keywords" content="RepV, Neurosymbolic, Plan Verification, AI Safety, Machine Learning">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RepV: Safety-Separable Latent Spaces for Scalable Neurosymbolic Plan Verification</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">RepV</h1>
+          <h2 class="title publication-title">Safety-Separable Latent Spaces for Scalable <b>N</b>eurosymbolic <b>P</b>lan <b>V</b>erification</h2>
+          <div class="is-size-5 publication-authors">
+            <!-- <span class="author-block">
+              <a href="some link">First Last</a><sup>1</sup>,</span>
+            <span class="author-block"> -->
+          </div>
+
+          <!-- <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Institution 1,</span>
+            <span class="author-block"><sup>2</sup>Institution 2</span>
+          </div> -->
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+
+              <span class="link-block">
+                <a href="https://github.com/RepV-Project/repv-project.github.io"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (Coming Soon)</span>
+                  </a>
+              </span>
+
+              <span class="link-block">
+                <a href="https://github.com/RepV-Project/repv-project.github.io"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Demo Notebook (Coming Soon)</span>
+                </a>
+              </span>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-light" style="margin-bottom: 3rem;">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3"><br>Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            As AI systems migrate to safety–critical domains, verifying that their actions comply with well-defined rules remains a challenge.
+            Formal methods provide provable guarantees but demand hand-crafted temporal-logic specifications, offering limited expressiveness and accessibility.
+            Deep learning approaches enable evaluation of plans against natural-language constraints, yet their opaque decision process invites misclassifications with potentially severe consequences.
+          </p>
+          <p>
+            We introduce RepV, a neurosymbolic verifier that unifies both views by learning a latent space where safe and unsafe plans are linearly separable.
+            Starting from a modest seed set of plans labeled by an off-the-shelf model checker, RepV trains a lightweight projector that embeds each plan, together with a language model-generated rationale, into a low-dimensional space; a frozen linear boundary then verifies compliance for unseen natural-language rules in a single forward pass.
+          </p>
+          <p>
+            Beyond binary classification, RepV provides a probabilistic guarantee on the likelihood of correct verification based on its position in the latent space. This guarantee enables a guarantee-driven refinement of the planner, improving rule compliance without human annotations.
+            Empirical evaluations show that RepV improves compliance prediction accuracy by up to 15% compared to baseline methods while adding fewer than 0.2 M parameters. Furthermore, our refinement framework outperforms ordinary fine-tuning baselines across various planning domains.
+            These results show that safety-separable latent spaces offer a scalable, plug-and-play primitive for reliable neurosymbolic plan verification.
+
+
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+<section class="hero">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3"><br>Framework Overview</h2>
+        
+        <!-- First Image and Description -->
+        <div class="content has-text-justified" style="margin-bottom: 3rem;">
+          <div class="has-text-centered">
+            <img src="./static/images/logic.png" style="max-width: 80%; margin: 0 auto 1.5rem; display: block;">
+          </div>
+          <p>We introduce RepV, a neurosymbolic verifier that bridges formal methods and deep representation learning by learning a latent space where safe and unsafe plans become linearly separable. Starting from a small seed set of plans labeled by an off-the-shelf model checker, RepV trains a lightweight projector that embeds each plan—along with its LLM-generated rationale—into a low-dimensional, safety-aware space. A frozen linear boundary then certifies compliance for unseen natural-language rules in a single forward pass, providing a probabilistic guarantee of rule satisfaction rather than a binary decision.</p>
+        </div>
+
+        <!-- Second Image and Description -->
+        <div class="content has-text-justified">
+          <div class="has-text-centered">
+            <img src="./static/images/refine.png" style="max-width: 80%; margin: 0 auto 1.5rem; display: block;">
+          </div>
+          <p>Beyond verification, RepV enables guarantee-guided refinement of foundation models: the probabilistic guarantee scores serve as reward signals to fine-tune or rank generated plans, improving the likelihood of producing specification-compliant actions without human intervention. This makes RepV an efficient and scalable framework for safety-critical reasoning and plan generation across diverse robotic and simulation environments.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body has-text-centered" style="min-height: 300px; display: flex; align-items: center; justify-content: center;">
+      <div>
+        <h3 class="title is-4">Slideshow Video Coming Soon</h3>
+        <p class="subtitle is-5">Check back later for our presentation video</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-light">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <h2 class="title is-3 has-text-centered">Navigation Examples</h2>
+      
+      <!-- First Row -->
+      <div class="columns is-centered" style="margin-bottom: 2rem;">
+        <div class="column is-half">
+          <div class="has-text-centered">
+            <video width="100%" autoplay loop muted playsinline>
+              <source src="./static/videos/drone_3rdperson.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+        <div class="column is-half">
+          <div class="has-text-centered">
+            <video width="100%" autoplay loop muted playsinline>
+              <source src="./static/videos/drone_nav.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+      <div class="has-text-centered" style="margin-top: -1rem; margin-bottom: 2rem; font-size: 1.1rem;">
+        <p>Task prompt: Fly in a square-shaped trajectory</p>
+        <p>Rule: Keep altitude below 10 meters and landing speed within 1 m/s</p>
+      </div>
+      
+      <!-- Second Row - GO2 Robot -->
+      <div class="columns is-centered" style="margin-bottom: 2rem;">
+        <div class="column is-half">
+          <div class="has-text-centered">
+            <video width="100%" autoplay loop muted playsinline>
+              <source src="./static/videos/go2_top_view.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+        <div class="column is-half">
+          <div class="has-text-centered">
+            <video width="100%" autoplay loop muted playsinline>
+              <source src="./static/videos/go2_first_view.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+      <div class="has-text-centered" style="margin-top: -1rem; margin-bottom: 2rem; font-size: 1.1rem;">
+        <p>Task prompt: Go to main entrance and sit down</p>
+        <p>Rule: Bypass the obstacles and do not stop</p>
+      </div>
+      
+      <!-- Third Row - GO2 Robot Sample 2 -->
+      <div class="columns is-centered" style="margin-bottom: 2rem;">
+        <div class="column is-half">
+          <div class="has-text-centered">
+            <video width="100%" autoplay loop muted playsinline>
+              <source src="./static/videos/go2_fpv_sample2.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+        <div class="column is-half">
+          <div class="has-text-centered">
+            <video width="100%" autoplay loop muted playsinline>
+              <source src="./static/videos/go2_thirdperson_sample2.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+      <div class="has-text-centered" style="margin-top: -1rem; margin-bottom: 2rem; font-size: 1.1rem;">
+        <p>Task prompt: Go straight 8 meters and turn left</p>
+        <p>Rule: Bypass the obstacles and do not stop</p>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<!--
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>bibtex will go here</code></pre>
+  </div>
+</section> -->
+
+
+<footer class="footer">
+  <div class="container">
+    <!--
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+      -->
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content bottom-attr-text">
+          <p style="font-size: 0.85rem;">
+            We express our thanks towards the authors of <a
+              href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> for the template of this website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
